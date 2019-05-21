@@ -13,7 +13,7 @@
   "dependencies": {
     "cesium": "^1.52.0",
     "cesium-navigation-es6": "^1.0.1",
-    "cesium-print": "^1.0.4",
+    "cesium-print": "^1.0.6",
     "element-ui": "^2.4.11",
     "html2canvas": "^1.0.0-alpha.12",
     "vue": "^2.5.2",
