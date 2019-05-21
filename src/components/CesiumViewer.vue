@@ -262,7 +262,7 @@ export default {
           viewer.imageryLayers.addImageryProvider(
             new Cesium.WebMapTileServiceImageryProvider({
               url:
-                "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
+                "https://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtBasicLayer",
               style: "default",
               format: "image/jpeg",
@@ -277,7 +277,7 @@ export default {
           viewer.imageryLayers.addImageryProvider(
             new Cesium.WebMapTileServiceImageryProvider({
               url:
-                "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
+                "https://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtVecBasicLayer",
               style: "default",
               format: "image/jpeg",
@@ -289,7 +289,7 @@ export default {
         //谷歌影像
         case "gg":
           var url =
-            "http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
+            "https://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
           viewer.imageryLayers.addImageryProvider(
             new Cesium.UrlTemplateImageryProvider({ url: url })
           );
@@ -328,7 +328,7 @@ export default {
       viewer.imageryLayers.addImageryProvider(
         new Cesium.WebMapTileServiceImageryProvider({
           url:
-            "http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
+            "https://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",
           style: "default",
           format: "image/jpeg",
@@ -340,7 +340,7 @@ export default {
       viewer.imageryLayers.addImageryProvider(
         new Cesium.WebMapTileServiceImageryProvider({
           url:
-            "http://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
+            "https://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",
           style: "default",
           format: "image/jpeg",
