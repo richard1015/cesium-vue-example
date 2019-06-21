@@ -1,14 +1,14 @@
 <template>
   <div class="CesiumViewer">
     <div id="cesiumContainer"></div>
-    <el-button class="printer-btn" @click="print" type="primary" icon="el-icon-printer">打印</el-button>
+    <el-button class="printer-btn" @click="print" type="primary" icon="el-icon-printer">print</el-button>
 
-    <el-dialog title="打印设置" :visible.sync="dialogFormVisible" width="30%">
+    <el-dialog title="print setting" :visible.sync="dialogFormVisible" width="40%">
       <el-form :model="form">
-        <el-form-item label="打印标题" :label-width="formLabelWidth">
+        <el-form-item label="print title" :label-width="formLabelWidth">
           <el-input v-model="form.title" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="标题字体预览" :label-width="formLabelWidth">
+        <el-form-item label="title font size preview" :label-width="formLabelWidth">
           <el-input
             :disabled="true"
             v-bind:style="{fontSize:form.fontSize}"
@@ -16,8 +16,8 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="标题字号" :label-width="formLabelWidth">
-          <el-select style="width:100%" v-model="form.fontSize" placeholder="请选择字号">
+        <el-form-item label="title font size" :label-width="formLabelWidth">
+          <el-select style="width:100%" v-model="form.fontSize" placeholder="font size">
             <el-option label="h1" value="32"></el-option>
             <el-option label="h2" value="24"></el-option>
             <el-option label="h3" value="18.72"></el-option>
@@ -26,19 +26,19 @@
             <el-option label="h6" value="12"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="打印宽" :label-width="formLabelWidth">
-          <el-input placeholder="单位px" v-model="form.width"></el-input>
+        <el-form-item label="print width" :label-width="formLabelWidth">
+          <el-input placeholder="unit px" v-model="form.width"></el-input>
         </el-form-item>
-        <el-form-item label="打印高" :label-width="formLabelWidth">
-          <el-input placeholder="单位px" v-model="form.height"></el-input>
+        <el-form-item label="print height" :label-width="formLabelWidth">
+          <el-input placeholder="unit px" v-model="form.height"></el-input>
         </el-form-item>
-        <el-form-item label="下载打印文件" :label-width="formLabelWidth">
+        <el-form-item label="download print file" :label-width="formLabelWidth">
           <el-switch style="float: left;" v-model="form.downLoadEnable"></el-switch>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible=false">取 消</el-button>
-        <el-button type="primary" @click="printSetting">确 定</el-button>
+        <el-button @click="dialogFormVisible=false">cancel</el-button>
+        <el-button type="primary" @click="printSetting">ok</el-button>
       </div>
     </el-dialog>
   </div>
@@ -164,7 +164,12 @@ export default {
       const self=this;
       self.$notify({
         title: "",
-        message: "现在你可以使用鼠标拖拽选取打印区域，松开后开始打印！",
+        message: "现在你可以使用鼠标拖拽选取打印区域，松开后开始打印！Now you can use the mouse to drag and drop to select the print area, release it and start printing!",
+        type: "success"
+      });
+      self.$notify({
+        title: "",
+        message: "Now you can use the mouse to drag and drop to select the print area, release it and start printing!",
         type: "success"
       });
       let _confirmPromise = function() {

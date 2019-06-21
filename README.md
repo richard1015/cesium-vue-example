@@ -3,6 +3,13 @@
 > cesium-vue + webpack + element-ui
 > pulgin cesium-print+cesium-navigation-es6
 
+
+## Demo
+
+https://richard1015.github.io/cesium/
+
+![演示](/demo.png "demo.png")
+
 ## Build Setup
 
 ``` bash
