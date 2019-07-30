@@ -161,15 +161,11 @@ export default {
     },
     //打印事件
     print() {
-      const self=this;
+      const self = this;
       self.$notify({
         title: "",
-        message: "现在你可以使用鼠标拖拽选取打印区域，松开后开始打印！Now you can use the mouse to drag and drop to select the print area, release it and start printing!",
-        type: "success"
-      });
-      self.$notify({
-        title: "",
-        message: "Now you can use the mouse to drag and drop to select the print area, release it and start printing!",
+        message:
+          "现在你可以使用鼠标拖拽选取打印区域，松开后开始打印！Now you can use the mouse to drag and drop to select the print area, release it and start printing!",
         type: "success"
       });
       let _confirmPromise = function() {
