@@ -44,8 +44,24 @@
   </div>
 </template>
 <script type="text/javascript">
-import Cesium from "cesium/Cesium";
-import "cesium/Widgets/widgets.css";
+import {
+  Cesium3DTileset,
+  EllipsoidTerrainProvider,
+  createWorldTerrain,
+  IonResource,
+  Viewer,
+  Clock,
+  WebMapTileServiceImageryProvider,
+  createDefaultImageryProviderViewModels,
+  Cartesian3,
+  Rectangle,
+  UrlTemplateImageryProvider,
+  ArcGisMapServerImageryProvider,
+  BingMapsImageryProvider,
+  createTileMapServiceImageryProvider,
+  BingMapsStyle
+} from "cesium";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 //指北针插件
 import CesiumNavigation from "cesium-navigation-es6";
 //打印插件
@@ -76,7 +92,7 @@ export default {
   },
   methods: {
     init() {
-      viewer = new Cesium.Viewer("cesiumContainer", {
+      viewer = new Viewer("cesiumContainer", {
         animation: false, //是否创建动画小器件，左下角仪表
         baseLayerPicker: false, //是否显示图层选择器
         fullscreenButton: true, //是否显示全屏按钮
@@ -88,12 +104,12 @@ export default {
         timeline: false, //是否显示时间轴
         navigationHelpButton: false, //是否显示右上角的帮助按钮
         scene3DOnly: true, //如果设置为true，则所有几何图形以3D模式绘制以节约GPU资源
-        clock: new Cesium.Clock(), //用于控制当前时间的时钟对象
+        clock: new Clock(), //用于控制当前时间的时钟对象
         selectedImageryProviderViewModel: undefined, //当前图像图层的显示模型，仅baseLayerPicker设为true有意义
-        imageryProviderViewModels: Cesium.createDefaultImageryProviderViewModels(), //可供BaseLayerPicker选择的图像图层ProviderViewModel数组
+        // imageryProviderViewModels: createDefaultImageryProviderViewModels(), //可供BaseLayerPicker选择的图像图层ProviderViewModel数组
         selectedTerrainProviderViewModel: undefined, //当前地形图层的显示模型，仅baseLayerPicker设为true有意义
-        terrainProviderViewModels: Cesium.createDefaultTerrainProviderViewModels(), //可供BaseLayerPicker选择的地形图层ProviderViewModel数组
-        terrainProvider: new Cesium.EllipsoidTerrainProvider(), //地形图层提供者，仅baseLayerPicker设为false有意义
+        // terrainProviderViewModels: createDefaultTerrainProviderViewModels(), //可供BaseLayerPicker选择的地形图层ProviderViewModel数组
+        terrainProvider: new EllipsoidTerrainProvider(), //地形图层提供者，仅baseLayerPicker设为false有意义
         // skyBox: new Cesium.SkyBox({
         //   sources: {
         //     positiveX: "Cesium-1.7.1/Skybox/px.jpg",
@@ -228,7 +244,7 @@ export default {
     initNavigation() {
       var options = {};
       // 用于在使用重置导航重置地图视图时设置默认视图控制。接受的值是Cesium.Cartographic 和 Cesium.Rectangle.
-      options.defaultResetView = Cesium.Rectangle.fromDegrees(80, 22, 130, 50);
+      options.defaultResetView = Rectangle.fromDegrees(80, 22, 130, 50);
       // 用于启用或禁用罗盘。true是启用罗盘，false是禁用罗盘。默认值为true。如果将选项设置为false，则罗盘将不会添加到地图中。
       options.enableCompass = true;
       // 用于启用或禁用缩放控件。true是启用，false是禁用。默认值为true。如果将选项设置为false，则缩放控件将不会添加到地图中。
@@ -241,7 +257,7 @@ export default {
     },
     /** 中国坐标 */
     getChinaPostion() {
-      return Cesium.Cartesian3.fromDegrees(116.435314, 40.960521, 10000000.0);
+      return Cartesian3.fromDegrees(116.435314, 40.960521, 10000000.0);
     },
     /**
      *  初始定位中国
@@ -261,7 +277,7 @@ export default {
         //天地图
         case "tdt":
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.WebMapTileServiceImageryProvider({
+            new WebMapTileServiceImageryProvider({
               url:
                 "https://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtBasicLayer",
@@ -276,7 +292,7 @@ export default {
         //天地图矢量
         case "tdtsl":
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.WebMapTileServiceImageryProvider({
+            new WebMapTileServiceImageryProvider({
               url:
                 "https://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtVecBasicLayer",
@@ -292,12 +308,12 @@ export default {
           var url =
             "https://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.UrlTemplateImageryProvider({ url: url })
+            new UrlTemplateImageryProvider({ url: url })
           );
           break;
         case "arcgis":
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.ArcGisMapServerImageryProvider({
+            new ArcGisMapServerImageryProvider({
               url:
                 "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
               enablePickFeatures: false
@@ -307,16 +323,16 @@ export default {
         //必应
         case "bing":
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.BingMapsImageryProvider({
+            new BingMapsImageryProvider({
               url: "https://dev.virtualearth.net",
               key: "get-yours-at-https://www.bingmapsportal.com/",
-              mapStyle: Cesium.BingMapsStyle.AERIAL
+              mapStyle: BingMapsStyle.AERIAL
             })
           );
           break;
         case "dark":
           viewer.imageryLayers.addImageryProvider(
-            new Cesium.createTileMapServiceImageryProvider({
+            new createTileMapServiceImageryProvider({
               url: "https://cesiumjs.org/blackmarble",
               credit: "Black Marble imagery courtesy NASA Earth Observatory",
               flipXY: true // Only old gdal2tile.py generated tilesets need this flag.
@@ -327,7 +343,7 @@ export default {
 
       //全球影像中文注记服务
       viewer.imageryLayers.addImageryProvider(
-        new Cesium.WebMapTileServiceImageryProvider({
+        new WebMapTileServiceImageryProvider({
           url:
             "https://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",
@@ -339,7 +355,7 @@ export default {
       );
       //全球矢量中文标注服务
       viewer.imageryLayers.addImageryProvider(
-        new Cesium.WebMapTileServiceImageryProvider({
+        new WebMapTileServiceImageryProvider({
           url:
             "https://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",

@@ -11,8 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "cesium": "^1.52.0",
-    "cesium-navigation-es6": "^1.0.1",
+    "cesium": "^1.64.0",
+    "cesium-navigation-es6": "^1.1.2",
     "cesium-print": "^1.0.6",
     "element-ui": "^2.4.11",
     "html2canvas": "^1.0.0-alpha.12",
