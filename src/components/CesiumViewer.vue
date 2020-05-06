@@ -58,10 +58,9 @@ import {
   UrlTemplateImageryProvider,
   ArcGisMapServerImageryProvider,
   BingMapsImageryProvider,
-  createTileMapServiceImageryProvider,
   BingMapsStyle
-} from "cesium";
-import "cesium/Build/Cesium/Widgets/widgets.css";
+} from "cesium/Source/Cesium.js";
+import 'cesium/Build/Cesium/Widgets/widgets.css';
 //指北针插件
 import CesiumNavigation from "cesium-navigation-es6";
 //打印插件
