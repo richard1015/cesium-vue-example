@@ -20,13 +20,10 @@ export default {
   height: 100%;
   width: 100%;
 }
-
 .cesium-widget-credits {
   display: none !important;
   visibility: hidden !important;
 }
-
-
 body {
   background-color: rgba(0, 0, 0, 0.87);
 }
