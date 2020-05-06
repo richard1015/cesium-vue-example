@@ -4,11 +4,11 @@
 > cesium-vue + webpack + element-ui
 > pulgin cesium-print+cesium-navigation-es6
 
-## Vue CLI 4版本 Demo
+## Vue CLI 2版本 Demo
 
 https://github.com/richard1015/cesium-vue-example/tree/master
 
-## Vue CLI 2版本 Demo
+## Vue CLI 4版本 Demo
 
 https://github.com/richard1015/cesium-vue-example/tree/vuecli4
 
