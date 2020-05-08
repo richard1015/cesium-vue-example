@@ -1,6 +1,7 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 module.exports = {
+    publicPath: './',
     configureWebpack: {
         plugins: [
             // Copy Cesium Assets, Widgets, and Workers to a static directory
