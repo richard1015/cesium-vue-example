@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "cesium": "^1.69.0",
-    "cesium-navigation-es6": "^1.1.5",
+    "cesium-navigation-es6": "^1.1.6",
     "cesium-print": "^1.0.6",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.1",
