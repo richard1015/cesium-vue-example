@@ -9,12 +9,8 @@
           <el-input v-model="form.title" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="title font size preview" :label-width="formLabelWidth">
-          <el-input
-            :disabled="true"
-            v-bind:style="{fontSize:form.fontSize}"
-            v-model="form.title"
-            autocomplete="off"
-          ></el-input>
+          <el-input :disabled="true" v-bind:style="{fontSize:form.fontSize}" v-model="form.title" autocomplete="off">
+          </el-input>
         </el-form-item>
         <el-form-item label="title font size" :label-width="formLabelWidth">
           <el-select style="width:100%" v-model="form.fontSize" placeholder="font size">
@@ -59,8 +55,8 @@ import {
   ArcGisMapServerImageryProvider,
   BingMapsImageryProvider,
   BingMapsStyle
-} from "cesium/Source/Cesium.js";
-import 'cesium/Build/Cesium/Widgets/widgets.css';
+} from "cesium";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 //指北针插件
 import CesiumNavigation from "cesium-navigation-es6";
 //打印插件
@@ -278,7 +274,7 @@ export default {
           viewer.imageryLayers.addImageryProvider(
             new WebMapTileServiceImageryProvider({
               url:
-                "https://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
+                "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtBasicLayer",
               style: "default",
               format: "image/jpeg",
@@ -293,7 +289,7 @@ export default {
           viewer.imageryLayers.addImageryProvider(
             new WebMapTileServiceImageryProvider({
               url:
-                "https://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
+                "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=93d1fdef41f93d2211deed6d22780c48",
               layer: "tdtVecBasicLayer",
               style: "default",
               format: "image/jpeg",
@@ -305,7 +301,7 @@ export default {
         //谷歌影像
         case "gg":
           var url =
-            "https://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
+            "http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
           viewer.imageryLayers.addImageryProvider(
             new UrlTemplateImageryProvider({ url: url })
           );
@@ -344,7 +340,7 @@ export default {
       viewer.imageryLayers.addImageryProvider(
         new WebMapTileServiceImageryProvider({
           url:
-            "https://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
+            "http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",
           style: "default",
           format: "image/jpeg",
@@ -356,7 +352,7 @@ export default {
       viewer.imageryLayers.addImageryProvider(
         new WebMapTileServiceImageryProvider({
           url:
-            "https://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
+            "http://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk=93d1fdef41f93d2211deed6d22780c48",
           layer: "tdtAnnoLayer",
           style: "default",
           format: "image/jpeg",
